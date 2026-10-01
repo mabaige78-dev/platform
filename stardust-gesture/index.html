@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060915">
+  <meta name="description" content="用手势塑造星尘：实时交互的 3D 粒子视觉实验室。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23060915'/%3E%3Cpath d='M32 7l4.5 20.5L57 32l-20.5 4.5L32 57l-4.5-20.5L7 32l20.5-4.5z' fill='%238c8aff'/%3E%3Ccircle cx='32' cy='32' r='5' fill='white'/%3E%3C/svg%3E">
+  <title>星尘 · 手势粒子实验室</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene" aria-label="交互式三维粒子模型"></canvas>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>STARDUST <em>LAB</em></span></div>
+      <div class="topbar-right"><span class="live-dot"></span><span>实时粒子引擎</span><span class="top-sep"></span><span id="fps">60 FPS</span></div>
+    </header>
+
+    <main>
+      <section class="intro" aria-label="作品介绍">
+        <p class="eyebrow"><span class="eyebrow-line"></span> INTERACTIVE PARTICLE STUDIO <span class="serial">/ 001</span></p>
+        <h1>让宇宙<br><span>随手而动。</span></h1>
+        <p class="subtitle">张开手掌，让星尘绽放。轻移指尖，转动你的宇宙。</p>
+        <div class="hint"><span class="hint-icon">⌘</span><span id="gestureHint">拖动画面旋转 · 滚轮缩放</span></div>
+      </section>
+
+      <div class="stage-label" aria-hidden="true"><span class="crosshair">＋</span><span id="activeName">NEBULA / 星云</span><span class="stage-line"></span><span>01 / 04</span></div>
+
+      <aside class="panel" aria-label="粒子控制台">
+        <div class="panel-head"><div><span class="panel-kicker">CONTROL DECK</span><h2>粒子控制台</h2></div><span class="panel-index">01 — 04</span></div>
+        <div class="section-title"><span>粒子形态</span><span>FORM</span></div>
+        <div class="presets" role="group" aria-label="粒子模型">
+          <button class="preset active" data-preset="nebula" aria-pressed="true"><span class="preset-icon">✺</span><span>星云</span><small>01</small></button>
+          <button class="preset" data-preset="saturn" aria-pressed="false"><span class="preset-icon">◉</span><span>土星</span><small>02</small></button>
+          <button class="preset" data-preset="flower" aria-pressed="false"><span class="preset-icon">✿</span><span>花朵</span><small>03</small></button>
+          <button class="preset" data-preset="fireworks" aria-pressed="false"><span class="preset-icon">✧</span><span>烟花</span><small>04</small></button>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-title"><span>外观调节</span><span>APPEARANCE</span></div>
+        <label class="control-label" for="baseColor"><span>基础色彩</span><span id="colorValue">#8A83FF</span></label>
+        <div class="color-row"><input id="baseColor" type="color" value="#8a83ff" aria-label="粒子基础颜色"><div class="color-swatches" aria-label="推荐颜色"><button class="swatch selected" style="--swatch:#8a83ff" data-color="#8a83ff" aria-label="星云紫"></button><button class="swatch" style="--swatch:#53caff" data-color="#53caff" aria-label="冰蓝"></button><button class="swatch" style="--swatch:#ff8ac9" data-color="#ff8ac9" aria-label="星云粉"></button><button class="swatch" style="--swatch:#ffbf69" data-color="#ffbf69" aria-label="琥珀金"></button><button class="swatch" style="--swatch:#7de2bc" data-color="#7de2bc" aria-label="薄荷绿"></button></div></div>
+        <label class="control-label density-label" for="density"><span>粒子密度</span><span id="densityValue">72%</span></label>
+        <input id="density" class="range" type="range" min="20" max="100" value="72" aria-label="粒子密度">
+        <div class="range-ends"><span>轻盈</span><span>丰盈</span></div>
+
+        <div class="divider"></div>
+        <div class="section-title"><span>手势交互</span><span>LIVE INPUT</span></div>
+        <div class="camera-card"><div class="camera-preview"><video id="camera" autoplay muted playsinline></video><canvas id="handOverlay"></canvas><div id="cameraPlaceholder" class="camera-placeholder"><span>✦</span><small>CAMERA OFF</small></div></div><div class="camera-copy"><strong id="cameraStatus">等待连接</strong><span id="handStatus">开启摄像头，体验手势互动</span></div></div>
+        <button id="cameraButton" class="camera-button"><span class="button-icon">◉</span><span>开启摄像头</span><span class="button-tail">↗</span></button>
+        <p class="privacy">摄像头画面仅在本机处理，不会上传。</p>
+      </aside>
+    </main>
+
+    <footer class="footer"><span>STARDUST LAB <span class="footer-slash">/</span> EXPERIMENT 001</span><span class="footer-center">用双手，探索无限可能</span><span>DESIGNED FOR WONDER <span class="footer-star">✳</span></span></footer>
+  </div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
+
