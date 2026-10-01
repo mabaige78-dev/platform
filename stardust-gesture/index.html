@@ -8,7 +8,6 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23060915'/%3E%3Cpath d='M32 7l4.5 20.5L57 32l-20.5 4.5L32 57l-4.5-20.5L7 32l20.5-4.5z' fill='%238c8aff'/%3E%3Ccircle cx='32' cy='32' r='5' fill='white'/%3E%3C/svg%3E">
   <title>星尘 · 手势粒子实验室</title>
   <link rel="stylesheet" href="./style.css">
-  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
 </head>
 <body>
   <div id="app">
@@ -29,16 +28,17 @@
         <div class="hint"><span class="hint-icon">⌘</span><span id="gestureHint">拖动画面旋转 · 滚轮缩放</span></div>
       </section>
 
-      <div class="stage-label" aria-hidden="true"><span class="crosshair">＋</span><span id="activeName">NEBULA / 星云</span><span class="stage-line"></span><span>01 / 04</span></div>
+      <div class="stage-label" aria-hidden="true"><span class="crosshair">＋</span><span id="activeName">NEBULA / 星云</span><span class="stage-line"></span><span>01 / 05</span></div>
 
       <aside class="panel" aria-label="粒子控制台">
-        <div class="panel-head"><div><span class="panel-kicker">CONTROL DECK</span><h2>粒子控制台</h2></div><span class="panel-index">01 — 04</span></div>
+        <div class="panel-head"><div><span class="panel-kicker">CONTROL DECK</span><h2>粒子控制台</h2></div><span class="panel-index">01 — 05</span></div>
         <div class="section-title"><span>粒子形态</span><span>FORM</span></div>
         <div class="presets" role="group" aria-label="粒子模型">
           <button class="preset active" data-preset="nebula" aria-pressed="true"><span class="preset-icon">✺</span><span>星云</span><small>01</small></button>
           <button class="preset" data-preset="saturn" aria-pressed="false"><span class="preset-icon">◉</span><span>土星</span><small>02</small></button>
           <button class="preset" data-preset="flower" aria-pressed="false"><span class="preset-icon">✿</span><span>花朵</span><small>03</small></button>
           <button class="preset" data-preset="fireworks" aria-pressed="false"><span class="preset-icon">✧</span><span>烟花</span><small>04</small></button>
+          <button class="preset" data-preset="heart" aria-pressed="false"><span class="preset-icon">♥</span><span>爱心</span><small>05</small></button>
         </div>
 
         <div class="divider"></div>
@@ -48,6 +48,9 @@
         <label class="control-label density-label" for="density"><span>粒子密度</span><span id="densityValue">72%</span></label>
         <input id="density" class="range" type="range" min="20" max="100" value="72" aria-label="粒子密度">
         <div class="range-ends"><span>轻盈</span><span>丰盈</span></div>
+        <label class="control-label spread-label" for="spread"><span>扩散范围</span><span id="spreadValue">100%</span></label>
+        <input id="spread" class="range" type="range" min="55" max="430" value="100" aria-label="粒子扩散范围">
+        <div class="range-ends"><span>收拢</span><span>铺满画面</span></div>
 
         <div class="divider"></div>
         <div class="section-title"><span>手势交互</span><span>LIVE INPUT</span></div>
